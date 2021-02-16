@@ -21,7 +21,7 @@ export class DadesProductesService {
     return this._http.get<IProducte[]>(
       "http://localhost/M14/M14_Ac3_get_post/public/index.php/api/productes"
     );
-    //get retorna un observable
+    //get retorna un observablee
   }
 
   productes: IProducte[] = [];
