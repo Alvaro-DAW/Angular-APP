@@ -1,0 +1,44 @@
+<form [formGroup]="profileForm" >
+    <label>
+      Nom:
+      <input type="text" formControlName="nom" required>
+    </label>
+  
+    <label>
+      Descripcio:
+      <input type="text" formControlName="descripcio">
+    </label>
+    <!--    <div formGroupName="categoria">
+      <h3>Categoria</h3>
+  
+      <label>
+        Nom:
+        <input type="text" formControlName="nom">
+      </label>
+  
+     
+    </div>
+  -->
+
+    <label>
+      Foto:
+      <input type="file" formControlName="imatge">
+    </label>
+  
+    <button type="submit" [disabled]="!profileForm.valid" (click)="onSubmit()">Submit</button>
+  </form>
+  
+  <hr>
+  
+  <p>
+    Form Value: {{ profileForm.value | json }}
+  </p>
+  
+  
+  <p>
+    Form Status: {{ profileForm.status }}
+  </p>
+  
+  <p>
+    <button (click)="updateProfile()">Update Profile</button>
+  </p>
