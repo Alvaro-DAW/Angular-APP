@@ -1,0 +1,16 @@
+form{
+    max-width: 35em;
+    margin: auto;
+    padding: 5em;
+}
+form .btn{
+    max-width: 5em;
+}
+form .line{
+    border:none;
+    border-radius: 0px;
+    border-bottom: 1px black solid;
+}
+form .line:focus{
+    box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+}

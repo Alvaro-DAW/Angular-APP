@@ -1,44 +1,37 @@
-<form [formGroup]="profileForm" >
-    <label>
-      Nom:
-      <input type="text" formControlName="nom" required>
-    </label>
-  
-    <label>
-      Descripcio:
-      <input type="text" formControlName="descripcio">
-    </label>
-    <!--    <div formGroupName="categoria">
-      <h3>Categoria</h3>
-  
-      <label>
-        Nom:
-        <input type="text" formControlName="nom">
-      </label>
-  
-     
-    </div>
-  -->
+<form [formGroup]="profileForm" class="d-flex flex-column w">
+  <div class="form-group">
+    <label> Nom:</label>
+    <input type="text" class="form-control line" formControlName="nom" required />
+  </div>
+  <div class="form-group">
+    <label> Descripcio:</label>
+    <input type="text" class="form-control line" formControlName="descripcio" />
+  </div>
+  <div class="form-group">
+    <label> Valoracio:</label>
+    <input type="text" class="form-control line" formControlName="valoracio" />
+  </div>
 
-    <label>
-      Foto:
-      <input type="file" formControlName="imatge">
-    </label>
-  
-    <button type="submit" [disabled]="!profileForm.valid" (click)="onSubmit()">Submit</button>
-  </form>
-  
-  <hr>
-  
-  <p>
-    Form Value: {{ profileForm.value | json }}
-  </p>
-  
-  
-  <p>
-    Form Status: {{ profileForm.status }}
-  </p>
-  
-  <p>
-    <button (click)="updateProfile()">Update Profile</button>
-  </p>
+  <div class="form-group">
+    <label for="categoria"> Categoria:</label>
+    <select name="categoria" class="form-control" formControlName="categoria">
+      <option value="{{ categoria.id }}" *ngFor="let categoria of categories">
+        {{ categoria.nom }}
+      </option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label> Imatge:</label>
+    <input type="file" name="profile" (change)="onFileSelect($event)" />
+  </div>
+
+  <button
+    type="submit"
+    class="btn btn-primary"
+    [disabled]="!profileForm.valid"
+    (click)="onSubmit()"
+  >
+    Submit
+  </button>
+</form>
+
