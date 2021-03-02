@@ -9,9 +9,12 @@ import { ProductListComponent } from './product-list/product-list.component';
 import { DadesProductesService } from './service/dades-productes.service';
 import { WelcomeComponent } from './welcome/welcome.component';
 import { ProductListFilterPipe } from './product-list/product-list-filter.pipe';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HttpClient, HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { PruebaFormComponent } from './prueba-form/prueba-form.component';
+import { JwtInterceptor } from './_helpers/jwt.interceptor';
+import { fakeBackendProvider } from './_helpers/fake-backend';
+import { ErrorInterceptor } from './_helpers/error.interceptor';
 
 
 @NgModule({
@@ -36,7 +39,13 @@ import { PruebaFormComponent } from './prueba-form/prueba-form.component';
    ReactiveFormsModule
     
   ],
-  providers: [DadesProductesService],
+  providers: [DadesProductesService,
+    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
+
+    // provider used to create fake backend
+    fakeBackendProvider,],
+              
   bootstrap: [AppComponent],
   
 })

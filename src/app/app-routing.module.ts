@@ -6,6 +6,7 @@ import { ProductListComponent } from './product-list/product-list.component';
 import { PruebaFormComponent } from './prueba-form/prueba-form.component';
 import { WelcomeComponent } from './welcome/welcome.component';
 import {HomeComponent} from './home/home.component';
+import {AuthGuard} from "./_helpers/auth.guard";
 
 const routes: Routes = [
   { path: 'welcome', component: WelcomeComponent },
